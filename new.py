@@ -13,11 +13,8 @@ class Sales:
         date=datetime.datetime.now()
         wb=load_workbook('Book1.xlsx')
         ws=wb.active
-        print(wb.active)
         ws.title="Invoice"
         ws.append([date.strftime("%x"),date.strftime("%X"),self.name,self.price,self.qty,self.qty*self.price,self.todaySale,f"#{self.dta}"])
-        # print(date.strftime("%x")) #date
-        # print(date.strftime("%X")) #time
         wb.save('Book1.xlsx')
     def updteTotal(self):
         with open('totalSale.txt') as f:
@@ -27,7 +24,6 @@ class Sales:
             f.write(str(self.dta))
 
 choice = 'y'
-# i=1
 while choice =='y' or choice =='Y':
     name=input("Enter the name of product: ")
     qty=int(input("Enter the qty: "))
@@ -37,4 +33,3 @@ while choice =='y' or choice =='Y':
     ob1.updteTotal()
     ob1.writeinExcel()
     choice=input("Want to enter more?(y/n) ")
-    # i+=1
